@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script defer src="https://kit.fontawesome.com/b31adeb51c.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title> Search Box</title>
+    </head>
+    <body>
+        <div class="search-box">
+        <input class="search-txt" type="text" name="" placeholder="Type to search" id="searchbox">
+            <a class="search-btn" href="#" onclick="f()">
+                <i class="fas fa-search"></i>
+           </a>
+        </div>
+        <ul class="list-group" id="result"></ul>
+
+
+        <script type="text/javascript">
+                function f()
+            {
+                var searchResult = $("#searchbox").val();
+                alert(searchResult);
+                $.ajax({
+                        url:'https://api.themoviedb.org/3/search/movie?api_key=98b6539c508418ce47a38d640a9fdfd7&query=' + searchResult,
+                        success:function(response)
+                    {
+                        for(i=0;i<response.total_results;i++)
+                        console.log(response.results[i].original_title);
+                    },
+                    });
+            }
+        </script>
+    
+
+    </body>
+</html>
